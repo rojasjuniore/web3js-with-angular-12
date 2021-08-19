@@ -1,9 +1,9 @@
-<!-- <div class="container">
-    <button class="btn btn-primary" type="button">Button</button>
-</div> -->
+<div class="d-grid gap-2">
+    <button (click)="connectAccount()" class="btn btn-primary" type="button">connect account</button>
+    <button (click)="disconnect()" class="btn btn-primary" type="button">disconnect</button>
 
-<div class="container h-100">
-    <div class="row h-100 justify-content-center align-items-center">
-        <button (click)="connectAccount()" class="btn btn-primary" type="button">connect account</button>
-    </div>
+    <pre *ngIf="accountStatus">{{accountStatus|json}}</pre>
+    <button (click)="atracionesDisponibles()" class="btn btn-primary" type="button">atraciones disponibles</button>
+    <pre>{{contractService._atracionesDisponibles}}</pre>
+    <button (click)="nuevaAtraccion()" class="btn btn-primary" type="button">nueva atraccion</button>
 </div>

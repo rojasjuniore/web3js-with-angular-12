@@ -1,3 +1,5 @@
+// https://medium.com/upstate-interactive/how-to-connect-an-angular-application-to-a-smart-contract-using-web3js-f83689fb6909
+
 import { Component, OnInit } from '@angular/core';
 import { ContractService } from 'src/app/services/contract.service';
 
@@ -7,10 +9,15 @@ import { ContractService } from 'src/app/services/contract.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  accountStatus: any;
 
   constructor(public contractService: ContractService) { }
 
   ngOnInit(): void {
+    this.contractService.accountStatus$.subscribe(res => {
+      console.log("accountStatus$", res)
+      this.accountStatus = res;
+    })
   }
 
   connectAccount() {
@@ -18,6 +25,16 @@ export class HomeComponent implements OnInit {
     this.contractService.connectAccount();
   }
 
+  atracionesDisponibles() {
+    this.contractService.atracionesDisponibles();
+  }
 
+  nuevaAtraccion() {
+    this.contractService.nuevaAtraccion();
+  }
+
+  disconnect() {
+    this.contractService.disconnectAccount();
+  }
 
 }
