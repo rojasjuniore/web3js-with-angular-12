@@ -1,0 +1,9 @@
+https://stackoverflow.com/questions/66749738/angular-web3-js-module-not-found-error-cant-resolve-crypto
+https://github.com/Web3Modal/web3modal/issues/190
+
+
+
+tuto:
+
+https://medium.com/blockchain-developer/learn-how-to-create-your-own-dapp-with-angular-9-part-ii-bf7ae1e6d14
+https://medium.com/upstate-interactive/how-to-connect-an-angular-application-to-a-smart-contract-using-web3js-f83689fb6909
