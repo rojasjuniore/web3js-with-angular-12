@@ -46,6 +46,7 @@
               "@walletconnect/socket-transport",
               "@walletconnect/environment",
               "walletconnect/encoding",
+              "walletconnect/encoding",
               "query-string",
               "@walletconnect/web3-provider",
               "web3"
