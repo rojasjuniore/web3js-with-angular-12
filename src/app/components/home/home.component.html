@@ -1,8 +1,47 @@
 <main class="container">
+    <pre>{{contractService.errorTransation|json}}</pre>
     <div class="bg-light p-5 rounded">
-        <h1>Navbar example</h1>
-        <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it
-            will remain fixed to the top of your browser’s viewport.</p>
-        <a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">View navbar docs &raquo;</a>
+        <h1>Gestion de Token</h1>
+        <a class="btn btn-lg btn-primary" (click)="connectAccount()" role="button">connect account &raquo;</a>
+        <p *ngIf="accountStatus">accounts: &raquo; {{accountStatus[0]}}</p>
     </div>
+    <div class="container pt-5"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-grid gap-2" (click)="contractService.getBalanceOf()">
+                    <button class="btn btn-primary" type="button">balance Of contract</button>
+                </div>
+                <div></div>
+                <pre>{{contractService._balanceOf|json}}</pre>
+            </div>
+            <div class="col">
+                <div class="d-grid gap-2" (click)="contractService.generarTokens()">
+                    <button class="btn btn-primary" type="button">generar tokens 100 x</button>
+                </div>
+                <div></div>
+                <pre>
+                    {{contractService._precioTokens}}
+                </pre>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col">
+                <div class="d-grid gap-2" (click)="contractService.setComprarTokens()">
+                    <button class="btn btn-primary" type="button">comprar tokens x</button>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="d-grid gap-2" (click)="contractService.getMisTokens()">
+                    <button class="btn btn-primary" type="button">mis tokens</button>
+                </div>
+                <div></div>
+                <pre>{{contractService._misTokens|json}}</pre>
+            </div>
+        </div>
+    </div>
+
+
 </main>

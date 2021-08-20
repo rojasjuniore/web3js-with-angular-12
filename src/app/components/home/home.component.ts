@@ -25,16 +25,13 @@ export class HomeComponent implements OnInit {
     this.contractService.connectAccount();
   }
 
-  atracionesDisponibles() {
-    this.contractService.atracionesDisponibles();
-  }
+  // atracionesDisponibles() {
+  //   this.contractService.atracionesDisponibles();
+  // }
 
-  nuevaAtraccion() {
-    this.contractService.nuevaAtraccion();
-  }
+  // nuevaAtraccion() {
+  //   this.contractService.nuevaAtraccion();
+  // }
 
-  disconnect() {
-    this.contractService.disconnectAccount();
-  }
 
 }
