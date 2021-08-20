@@ -1,47 +1,66 @@
 // https://web3js.readthedocs.io/en/v1.2.11/web3-eth-contract.html#id50
 // https://web3js.readthedocs.io/en/v1.4.0/glossary.html
 
-export const token_address = '0x11a1f9A14c5f78dE142aD088622622014C05497c';
+export const token_address_contract = '0xC73274190982e0A367Ba9543d74a54FbCD6F681a';
+export const token_address_creator = '0x4C54d42aB8a14E0142df679a075E4C4dE767d8D0';
 export const token_abi = [
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_registry",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "_causeRegistry",
-                "type": "address"
-            }
-        ],
+        "inputs": [],
         "stateMutability": "nonpayable",
         "type": "constructor"
     },
     {
         "type": "function",
-        "name": "AtracionesDisponibles",
+        "name": "comprarTokens",
         "constant": false,
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "inputs": [],
-        "outputs": [
-            {
-                "name": "balance",
-                "type": "string[]"
-            }
-        ]
+        "payable": true,
+        "stateMutability": "payable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "_numTokens",
+            "type": "uint256"
+        }],
+        "outputs": []
     }, {
         "type": "function",
-        "name": "ComidasDisponibles",
+        "name": "balanceOf",
         "constant": false,
         "payable": false,
         "stateMutability": "nonpayable",
         "inputs": [],
-        "outputs": []
-    },
-    {
+        "outputs": [{
+            "name": "balanceOf",
+            "type": "uint256"
+        }]
+    }, {
+        "type": "function",
+        "name": "misTokens",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [],
+        "outputs": [{
+            "name": "balanceOf",
+            "type": "uint256"
+        }]
+    }, {
+        "type": "function",
+        "name": "generarTokens",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "_numTokens",
+            "type": "uint256"
+        }],
+        "outputs": [{
+            "name": "balanceOf",
+            "type": "uint256"
+        }]
+    }, {
         "type": "function",
         "name": "NuevaAtraccion",
         "constant": false,
@@ -59,18 +78,139 @@ export const token_abi = [
             "type": "uint256"
         }],
         "outputs": []
-    },
-    {
-        "anonymous": false,
-        "inputs": [
+    }, {
+        "type": "function",
+        "name": "BajaAtraccion",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "string",
+            "name": "_nombreAtraccion",
+            "type": "string"
+        }],
+        "outputs": []
+    }, {
+        "type": "function",
+        "name": "DarDeAltaAtraccion",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "string",
+            "name": "_nombreAtraccion",
+            "type": "string"
+        }],
+        "outputs": []
+    }, {
+        "type": "function",
+        "name": "AtracionesDisponibles",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [],
+        "outputs": [
             {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "id",
-                "type": "uint256"
+                "name": "balance",
+                "type": "string[]"
             }
-        ],
-        "name": "CreateOrganization",
-        "type": "event"
+        ]
+    }, {
+        "type": "function",
+        "name": "subirseAtraccion",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "string",
+            "name": "_nombreAtraccion",
+            "type": "string"
+        }],
+        "outputs": []
+    }, {
+        "type": "function",
+        "name": "Historial",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "balance",
+                "type": "string[]"
+            }
+        ]
+    }, {
+        "type": "function",
+        "name": "devolverToken",
+        "constant": false,
+        "payable": true,
+        "stateMutability": "payable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "_numTokens",
+            "type": "uint256"
+        }],
+        "outputs": []
     }
 ]
+
+
+// {
+//     "type": "function",
+//     "name": "AtracionesDisponibles",
+//     "constant": false,
+//     "payable": false,
+//     "stateMutability": "nonpayable",
+//     "inputs": [],
+//     "outputs": [
+//         {
+//             "name": "balance",
+//             "type": "string[]"
+//         }
+//     ]
+// }, {
+//     "type": "function",
+//     "name": "ComidasDisponibles",
+//     "constant": false,
+//     "payable": false,
+//     "stateMutability": "nonpayable",
+//     "inputs": [],
+//     "outputs": []
+// },
+// {
+//     "type": "function",
+//     "name": "NuevaAtraccion",
+//     "constant": false,
+//     "payable": false,
+//     "stateMutability": "nonpayable",
+//     "inputs": [{
+//         "indexed": false,
+//         "internalType": "string",
+//         "name": "_nombreAtraccion",
+//         "type": "string"
+//     }, {
+//         "indexed": false,
+//         "internalType": "uint256",
+//         "name": "_precio",
+//         "type": "uint256"
+//     }],
+//     "outputs": []
+// },
+// {
+//     "anonymous": false,
+//     "inputs": [
+//         {
+//             "indexed": false,
+//             "internalType": "uint256",
+//             "name": "id",
+//             "type": "uint256"
+//         }
+//     ],
+//     "name": "CreateOrganization",
+//     "type": "event"
+// }
