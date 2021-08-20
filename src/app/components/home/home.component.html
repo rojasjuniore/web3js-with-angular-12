@@ -1,8 +1,126 @@
 <main class="container">
+    <pre>{{contractService.errorTransation|json}}</pre>
     <div class="bg-light p-5 rounded">
-        <h1>Navbar example</h1>
-        <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it
-            will remain fixed to the top of your browser’s viewport.</p>
-        <a class="btn btn-lg btn-primary" href="/docs/5.1/components/navbar/" role="button">View navbar docs &raquo;</a>
+        <h1>Gestion de Token</h1>
+        <p *ngIf="accountStatus"> accounts: &raquo; {{accountStatus[0]}}</p>
+        <a [href]="contractService.rinkeby" target="_blank">
+            <p> address contract: &raquo; {{contractService.address_contract}}</p>
+        </a>
+        <a class="btn btn-lg btn-primary" (click)="connectAccount()" role="button">connect account &raquo;</a>
     </div>
+    <div class="container pt-5"></div>
+    <div class="container">
+
+        <div class="row pt-2 pb-2">
+            <div class=" col">
+                <div class="d-grid gap-2" (click)="contractService.getBalanceOf()">
+                    <button class="btn btn-primary" type="button">balance Of contract</button>
+                </div>
+                <div *ngIf="contractService._balanceOf" class="text-center">
+                    <h3>{{contractService._balanceOf}} Tokens</h3>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="number" [(ngModel)]="_generarTokens" type="text" class="form-control"
+                        placeholder="generar Tokens" aria-label="generar Tokens" aria-describedby="basic-addon2">
+                    <span (click)="contractService.generarTokens(_generarTokens)" class="input-group-text"
+                        id="basic-addon2">save</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-light p-5 rounded">
+        <h1>Gestion de Disney</h1>
+        <a class="btn btn-lg btn-primary" (click)="contractService.getMisTokens()" role="button">
+            Mis Tokens &raquo;
+        </a>
+        <div *ngIf="contractService._misTokens" class="text-center">
+            <h3>{{contractService._misTokens}} Tokens</h3>
+        </div>
+    </div>
+    <div class="container pt-5"></div>
+    <div class="container">
+        <div class="row  pt-2 pb-2">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="number" [(ngModel)]="_setComprarTokens" type="text" class="form-control"
+                        placeholder="Comprar Tokens" aria-label="Comprar Tokens" aria-describedby="basic-addon2">
+                    <span (click)="contractService.setComprarTokens(_setComprarTokens)" class="input-group-text"
+                        id="basic-addon2">comprar</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="number" [(ngModel)]="_devolverToken" type="text" class="form-control"
+                        placeholder="devolver Token" aria-label="devolver token" aria-describedby="basic-addon2">
+                    <span (click)="contractService.devolverToken(_devolverToken)" class="input-group-text"
+                        id="basic-addon2">devolver</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input [(ngModel)]="nuevaAtraccion" type="text" class="form-control" placeholder="nueva atraccion"
+                        aria-label="nueva atraccion" aria-describedby="basic-addon2">
+                    <span (click)="contractService.setNuevaAtraccion(nuevaAtraccion)" class="input-group-text"
+                        id="basic-addon2">save</span>
+                </div>
+            </div>
+        </div>
+        <div class="row  pt-2 pb-2">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input [(ngModel)]="darDeAltaAtraccion" type="text" class="form-control"
+                        placeholder="dar De Alta Atraccion" aria-label="dar De Alta Atraccion"
+                        aria-describedby="basic-addon2">
+                    <span (click)="contractService.darDeAltaAtraccion(darDeAltaAtraccion)" class="input-group-text"
+                        id="basic-addon2">save</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input [(ngModel)]="bajaAtraccion" type="text" class="form-control" placeholder="baja Atraccion"
+                        aria-label="baja Atraccion" aria-describedby="basic-addon2">
+                    <span (click)="contractService.bajaAtraccion(bajaAtraccion)" class="input-group-text"
+                        id="basic-addon2">save</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input [(ngModel)]="subirseAtraccion" type="text" class="form-control"
+                        placeholder="subirse atraccion" aria-label="subirse Atraccion" aria-describedby="basic-addon2">
+                    <span (click)="contractService.subirseAtraccion(subirseAtraccion)" class="input-group-text"
+                        id="basic-addon2">save</span>
+                </div>
+            </div>
+        </div>
+        <div class="row  pt-2 pb-2">
+
+            <div class="col-6">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" (click)="contractService.getHistorial()" type="button">
+                        get historial
+                    </button>
+                    <div></div>
+                    <ul>
+                        <li *ngFor="let item of contractService._historial">{{item}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" (click)="contractService.getAtracionesDisponibles()" type="button">
+                        atraciones disponibles
+                    </button>
+                    <div></div>
+                    <ul>
+                        <li *ngFor="let item of contractService._atracionesDisponibles">{{item}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </main>
