@@ -24,6 +24,7 @@ export class ContractService {
   _precioTokens: any
   _balanceOf: any
   _misTokens: any
+  _historial: any
   private accountStatusSource = new Subject<any>();
   accountStatus$ = this.accountStatusSource.asObservable();
 
@@ -64,13 +65,12 @@ export class ContractService {
     console.warn("-------------------------------")
     // --- temporarily re-initializating these for the effect file 
     this.provider = await this._web3Modal.connect(); // set provider
-    // console.log("provider", this.provider)
 
     this.web3js = new Web3(this.provider); // create web3 instance
-    // console.log("web3js", this.web3js)
 
     this.accounts = await this.web3js.eth.getAccounts();
-    // console.log("accounts", this.accounts)
+
+    this.accountStatusSource.next(this.accounts)
 
 
     this.uToken = new this.web3js.eth.Contract(token_abi, token_address_contract);
@@ -97,26 +97,33 @@ export class ContractService {
 
   async generarTokens() {
     await this.reInitializating()
-    const res = await this.uToken.methods.generarTokens(100000)
-      .call()
-      .catch((err) => {
-        this.errorTransation = err
-        console.error(err);
-      });
-    console.log("generarTokens", res)
+
+    await this.uToken.methods.generarTokens(100000).send({
+      from: this.accounts[0], // account address
+      gas: '5000000',
+      gasPrice: '20000000000'
+    }).on('confirmation', (confirmationNumber, receipt) => {
+      console.log("confirmation", confirmationNumber);
+    }).on('error', (error, receipt) => {
+      console.log("error", error);
+      console.log("receipt", receipt);
+    });
   }
 
 
   async setComprarTokens() {
     await this.reInitializating()
-    this._precioTokens = await this.uToken.methods.comprarTokens(1)
-      .call({ from: this.accounts[0] })
-      .catch((err) => {
-        this.errorTransation = err
-        console.error(err);
-      });
+    await this.uToken.methods.comprarTokens(1).send({
+      from: this.accounts[0], // account address
+      gas: '5000000',
+      gasPrice: '20000000000'
+    }).on('confirmation', (confirmationNumber, receipt) => {
+      console.log("confirmation", confirmationNumber);
+    }).on('error', (error, receipt) => {
+      console.log("error", error);
+      console.log("receipt", receipt);
+    });
 
-    console.log(this._precioTokens)
 
   }
 
@@ -132,6 +139,109 @@ export class ContractService {
 
   //  --------------------- Gestion de Disney -------------------
 
+
+  async setNuevaAtraccion() {
+    await this.reInitializating()
+
+    await this.uToken.methods.NuevaAtraccion(`"nueva atraccion ${Date.now()}"`, 1).send({
+      from: this.accounts[0], // account address
+      gas: '5000000',
+      gasPrice: '20000000000'
+    }).on('confirmation', (confirmationNumber, receipt) => {
+      console.log("confirmation", confirmationNumber);
+    }).on('error', (error, receipt) => {
+      console.log("error", error);
+      console.log("receipt", receipt);
+    });
+
+  }
+
+  async bajaAtraccion() {
+    await this.reInitializating()
+
+    await this.uToken.methods.BajaAtraccion(`name`).send({
+      from: this.accounts[0], // account address
+      gas: '5000000',
+      gasPrice: '20000000000'
+    }).on('confirmation', (confirmationNumber, receipt) => {
+      console.log("confirmation", confirmationNumber);
+    }).on('error', (error, receipt) => {
+      console.log("error", error);
+      console.log("receipt", receipt);
+    });
+
+  }
+
+  async darDeAltaAtraccion() {
+    await this.reInitializating()
+    await this.uToken.methods.DarDeAltaAtraccion(`name`).send({
+      from: this.accounts[0], // account address
+      gas: '5000000',
+      gasPrice: '20000000000'
+    }).on('confirmation', (confirmationNumber, receipt) => {
+      console.log("confirmation", confirmationNumber);
+    }).on('error', (error, receipt) => {
+      console.log("error", error);
+      console.log("receipt", receipt);
+    });
+
+  }
+
+  async getAtracionesDisponibles() {
+    await this.reInitializating()
+    this._atracionesDisponibles = await this.uToken.methods.AtracionesDisponibles()
+      .call({ from: this.accounts[0] })
+      .catch((err) => {
+        this.errorTransation = err
+        console.error(err);
+      });
+
+  }
+
+  async subirseAtraccion() {
+    await this.reInitializating()
+    await this.uToken.methods.subirseAtraccion(`name`).send({
+      from: this.accounts[0], // account address
+      gas: '5000000',
+      gasPrice: '20000000000'
+    }).on('confirmation', (confirmationNumber, receipt) => {
+      console.log("confirmation", confirmationNumber);
+    }).on('error', (error, receipt) => {
+      console.log("error", error);
+      console.log("receipt", receipt);
+    });
+
+  }
+
+  async devolverToken() {
+    await this.reInitializating()
+    await this.uToken.methods.subirseAtraccion(1).send({
+      from: this.accounts[0], // account address
+      gas: '5000000',
+      gasPrice: '20000000000'
+    }).on('confirmation', (confirmationNumber, receipt) => {
+      console.log("confirmation", confirmationNumber);
+    }).on('error', (error, receipt) => {
+      console.log("error", error);
+      console.log("receipt", receipt);
+    });
+
+  }
+
+  async getHistorial() {
+    await this.reInitializating()
+    this._historial = await this.uToken.methods.Historial()
+      .call({ from: this.accounts[0] })
+      .catch((err) => {
+        this.errorTransation = err
+        console.error(err);
+      });
+  }
+
+
+
+
+}
 
 
 
@@ -163,4 +273,5 @@ export class ContractService {
   //   console.warn("--------------fin nuevaAtraccion-----------------")
 
   // }
-}
+
+

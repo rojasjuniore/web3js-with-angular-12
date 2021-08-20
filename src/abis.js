@@ -62,8 +62,108 @@ export const token_abi = [
             "name": "balanceOf",
             "type": "uint256"
         }]
+    }, {
+        "type": "function",
+        "name": "NuevaAtraccion",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "string",
+            "name": "_nombreAtraccion",
+            "type": "string"
+        }, {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "_precio",
+            "type": "uint256"
+        }],
+        "outputs": []
+    }, {
+        "type": "function",
+        "name": "BajaAtraccion",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "string",
+            "name": "_nombreAtraccion",
+            "type": "string"
+        }],
+        "outputs": []
+    }, {
+        "type": "function",
+        "name": "DarDeAltaAtraccion",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "string",
+            "name": "_nombreAtraccion",
+            "type": "string"
+        }],
+        "outputs": []
+    }, {
+        "type": "function",
+        "name": "AtracionesDisponibles",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "balance",
+                "type": "string[]"
+            }
+        ]
+    }, {
+        "type": "function",
+        "name": "subirseAtraccion",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "string",
+            "name": "_nombreAtraccion",
+            "type": "string"
+        }],
+        "outputs": []
+    }, {
+        "type": "function",
+        "name": "Historial",
+        "constant": false,
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "string",
+            "name": "_nombreAtraccion",
+            "type": "string"
+        }],
+        "outputs": [
+            {
+                "name": "balance",
+                "type": "string[]"
+            }
+        ]
+    }, {
+        "type": "function",
+        "name": "devolverToken",
+        "constant": false,
+        "payable": true,
+        "stateMutability": "payable",
+        "inputs": [{
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "_numTokens",
+            "type": "uint256"
+        }],
+        "outputs": []
     }
-
 ]
 
 

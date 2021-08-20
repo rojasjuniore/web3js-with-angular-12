@@ -2,30 +2,28 @@
     <pre>{{contractService.errorTransation|json}}</pre>
     <div class="bg-light p-5 rounded">
         <h1>Gestion de Token</h1>
+        <h3 *ngIf="accountStatus"> accounts: &raquo; {{accountStatus[0]}}</h3>
         <a class="btn btn-lg btn-primary" (click)="connectAccount()" role="button">connect account &raquo;</a>
-        <p *ngIf="accountStatus">accounts: &raquo; {{accountStatus[0]}}</p>
     </div>
     <div class="container pt-5"></div>
     <div class="container">
-        <div class="row">
-            <div class="col">
+
+        <div class="row pt-2 pb-2">
+            <div class=" col">
                 <div class="d-grid gap-2" (click)="contractService.getBalanceOf()">
                     <button class="btn btn-primary" type="button">balance Of contract</button>
                 </div>
-                <div></div>
-                <pre>{{contractService._balanceOf|json}}</pre>
+                <div *ngIf="contractService._balanceOf" class="text-center">
+                    <h3>{{contractService._balanceOf}}</h3>
+                </div>
             </div>
             <div class="col">
                 <div class="d-grid gap-2" (click)="contractService.generarTokens()">
                     <button class="btn btn-primary" type="button">generar tokens 100 x</button>
                 </div>
-                <div></div>
-                <pre>
-                    {{contractService._precioTokens}}
-                </pre>
             </div>
         </div>
-        <div class="row">
+        <div class="row  pt-2 pb-2">
 
             <div class="col">
                 <div class="d-grid gap-2" (click)="contractService.setComprarTokens()">
@@ -37,11 +35,84 @@
                 <div class="d-grid gap-2" (click)="contractService.getMisTokens()">
                     <button class="btn btn-primary" type="button">mis tokens</button>
                 </div>
-                <div></div>
-                <pre>{{contractService._misTokens|json}}</pre>
+                <div *ngIf="contractService._misTokens" class="text-center">
+                    <h3>{{contractService._misTokens}}</h3>
+                </div>
             </div>
         </div>
     </div>
+    <div class="bg-light p-5 rounded">
+        <h1>Gestion de Disney</h1>
+    </div>
+    <div class="container pt-5"></div>
+    <div class="container">
+        <div class="row  pt-2 pb-2">
+            <div class="col-6">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" (click)="contractService.bajaAtraccion()" type="button">
+                        nueva atraccion
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" (click)="contractService.darDeAltaAtraccion()" type="button">
+                        dar de alta Atraccion
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="row  pt-2 pb-2">
+            <div class="col-6">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" (click)="contractService.bajaAtraccion()" type="button">
+                        baja atraccion
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" (click)="contractService.getAtracionesDisponibles()"
+                        type="button">atraciones disponibles</button>
+                    <div></div>
+                    <ul>
+                        <li *ngFor="let item of contractService._atracionesDisponibles">{{item}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row  pt-2 pb-2">
+            <div class="col-6">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" (click)="contractService.subirseAtraccion()" type="button">
+                        subirse atraccion
+                    </button>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" (click)="contractService.getHistorial()" type="button">
+                        get historial
+                    </button>
+                    <div></div>
+                    <ul>
+                        <li *ngFor="let item of contractService._historial">{{item}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" (click)="contractService.devolverToken()" type="button">
+                        devolver token
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 </main>
