@@ -8,11 +8,12 @@ export const token_abi = [
         "inputs": [],
         "stateMutability": "nonpayable",
         "type": "constructor"
-    }, {
+    },
+    {
         "type": "function",
         "name": "comprarTokens",
         "constant": false,
-        "payable": false,
+        "payable": true,
         "stateMutability": "payable",
         "inputs": [{
             "indexed": false,
@@ -20,10 +21,7 @@ export const token_abi = [
             "name": "_numTokens",
             "type": "uint256"
         }],
-        "outputs": [{
-            "name": "balanceOf",
-            "type": "uint256"
-        }]
+        "outputs": []
     }, {
         "type": "function",
         "name": "balanceOf",
@@ -138,12 +136,7 @@ export const token_abi = [
         "constant": false,
         "payable": false,
         "stateMutability": "nonpayable",
-        "inputs": [{
-            "indexed": false,
-            "internalType": "string",
-            "name": "_nombreAtraccion",
-            "type": "string"
-        }],
+        "inputs": [],
         "outputs": [
             {
                 "name": "balance",
